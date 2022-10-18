@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Keen Drawer</title>
+
+    <script type="module" src="/build/keen.esm.js"></script>
+    <script nomodule src="/build/keen.js"></script>
+
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+
+      .side-nav ul {
+        list-style: none;
+      }
+
+      .side-nav li {
+        margin: 1rem 0;
+      }
+
+      .side-nav a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="drawer-btn">Open Side Menu</button>
+    <keen-drawer heading="Main Menu">
+      <nav class="side-nav">
+        <ul>
+          <li>Link one</li>
+          <li>Link two</li>
+          <li>Link three</li>
+        </ul>
+      </nav>
+    </keen-drawer>
+  </body>
+
+  <script>
+    const drawerButton = document.querySelector('#drawer-btn');
+    const drawer = document.querySelector('keen-drawer');
+    drawerButton.addEventListener('click', () => {
+      if (!drawer.isopen) {
+        // drawer.isopen = true;
+        drawer.open();
+      }
+    });
+    // setTimeout(() => {
+    //   drawer.heading = 'It changed...';
+    // }, 3000);
+  </script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/keen.esm.js"></script>
+    <script nomodule src="/build/keen.js"></script>
+
+    <style>
+      html {
+        --color-primary: #3b013b;
+        --color-secondary: #750175;
+        --color-text-inverse: white;
+        --color-light-gray: #ccc;
+        --color-error: rgb(208, 12, 12);
+      }
+    </style>
+  </head>
+  <body>
+    <keen-stepper steps="5" active="3"></keen-stepper>
+    <keen-stock-price stock-symbol="AAPL"></keen-stock-price>
+    <keen-stock-finder></keen-stock-finder>
+  </body>
+  <script>
+    const stockFinderEl = document.querySelector('keen-stock-finder');
+    stockFinderEl.addEventListener('keenSymbolSelected', e => {
+      console.log(e.detail);
+    });
+    const stepperEl = document.querySelector('keen-stepper');
+    const div = document.createElement('div');
+    div.innerText = `Step ${stepperEl.getAttribute('active')}`;
+    stepperEl.appendChild(div);
+    stepperEl.addEventListener('keenStepChange', e => {
+      const currentStep = e.detail;
+
+      switch (currentStep) {
+        case 1: {
+          div.innerText = 'Step 1';
+          break;
+        }
+        case 2: {
+          div.innerText = 'Step 2';
+          break;
+        }
+        case 3: {
+          div.innerText = 'Step 3';
+          break;
+        }
+        case 4: {
+          div.innerText = 'Step 4';
+          break;
+        }
+        case 5: {
+          div.innerText = 'Step 5';
+          break;
+        }
+        default:
+          break;
+      }
+    });
+  </script>
+</html>
